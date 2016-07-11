@@ -35,6 +35,7 @@ module LazyHighCharts
         var options = #{options_collection_as_string(object)};
         #{capture(&block) if block_given?}
         window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
+        window.chart_#{placeholder.underscore}.initReflow();
       EOJS
 
       core_js
