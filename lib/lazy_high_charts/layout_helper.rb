@@ -37,7 +37,7 @@ module LazyHighCharts
         window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
       EOJS
 
-      encapsulate_js core_js
+      core_js
     end
 
     def build_globals_html_output(object)
