@@ -32,10 +32,11 @@ module LazyHighCharts
 
     def build_html_output(type, placeholder, object, &block)
       core_js =<<-EOJS
-        var options = #{options_collection_as_string(object)};
-        #{capture(&block) if block_given?}
-        window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
-        window.chart_#{placeholder.underscore}.initReflow();
+        $(function(){
+    	    var options = #{options_collection_as_string(object)};
+    	    #{capture(&block) if block_given?}
+    	    window.chart_#{placeholder.underscore} = new Highcharts.#{type}(options);
+        })
       EOJS
 
       core_js
